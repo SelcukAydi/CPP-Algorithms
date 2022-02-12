@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <limits>
+#include <limits.h>
 
 std::vector<int> prefixSum(const std::vector<int> &arr)
 {
@@ -44,11 +44,50 @@ int solution(const std::vector<int> &arr)
     return minStart;
 }
 
+int solution1(const std::vector<int> &arr)
+{
+    int n = arr.size();
+    auto sums = prefixSum(arr);
+    float currentMin = 100.f;
+    int ans = 0;
+
+    int l = 0;
+
+    for(int r = 2; r < n; ++r)
+    {
+        float avg1 = sliceSum(sums, l, l + 1) / 2.0f;
+        float avg2 = sliceSum(sums, l + 1, r) / 2.0f;
+        float avg3 = sliceSum(sums, l, r) / 3.0f;
+
+        if( currentMin > avg1 )
+        {
+            currentMin = avg1;
+            ans = l;
+        }
+        
+        if( currentMin > avg2 )
+        {
+            currentMin = avg2;
+            ans = l + 1;
+        }
+
+        if( currentMin > avg3 )
+        {
+            currentMin = avg3;
+            ans = l;
+        }
+
+        ++l;
+    }
+
+    return ans;
+}
+
 int main(int argc, char const *argv[])
 {
     std::vector<int> v1 = { -3, -5, -8, -4, -10 };
     std::vector<int> v2 = { 4,2,2,5,1,5,8 };
-    std::cout << solution(v2) << '\n';
+    std::cout << solution1(v1) << '\n';
 
     return 0;
 }
