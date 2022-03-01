@@ -38,6 +38,35 @@ vector<int> solution1(vector<int> &A, vector<int> &B) {
     return L;
 }
 
+std::vector<int> solution2(const std::vector<int>& A, const std::vector<int>& B)
+{
+    int maxA = *std::max_element(A.begin(), B.end());
+
+    std::vector<int> ans(A.size(), 0);
+    std::vector<int> fibonaccies(maxA + 2, 0);
+
+    fibonaccies[1] = 1;
+
+    // Calculate the fibonacci series. Note that
+    // we get modulo of each item in the fibonacci series.
+    // This way prevents storing really big numbers.
+    //
+    for(int i = 2; i < maxA + 2; ++i)
+    {
+        fibonaccies[i] = fibonaccies[i - 1] + fibonaccies[i - 2];
+        fibonaccies[i] = fibonaccies[i] & ((1 << 30) - 1);
+    }
+
+    // Now calculate the fibonacci of each item in the vector A.
+    // Also calculate the modulo of each result with B.
+    //
+    for(int i = 0; i < A.size(); ++i)
+    {
+        ans[i] = fibonaccies[A[i] + 1] & ((1 << B[i]) - 1);
+    }
+
+    return ans;
+}
 
 int fibonacci(int N)
 {
@@ -87,7 +116,7 @@ int main(int argc, char const *argv[])
     std::vector<int> v1 = { 4,4,5,5,1,10 };
     std::vector<int> v2 = { 3,2,4,3,1,3 };
         
-    auto ans = solution1(v1, v2);
+    auto ans = solution2(v1, v2);
 
     //std::cout << fibonacci(10) << '\n';
 
