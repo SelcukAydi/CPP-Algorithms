@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int check(const std::vector<int>& arr, int k)
 {
@@ -11,6 +12,7 @@ int check(const std::vector<int>& arr, int k)
         if(arr[i] == 1 && last < i)
         {
             ++boards;
+            // last = i + k - 1;
             i += k - 1;
         }
     }
@@ -22,7 +24,7 @@ int solution(const std::vector<int>& arr, int k)
 {
     int n = arr.size();
     int ans = n;
-    int begin = 0;
+    int begin = 1;
     int end = n;
 
     while(begin <= end)
@@ -47,7 +49,7 @@ int main(int argc, char const *argv[])
 {
     std::vector<int> arr = { 1,0,1,0,1,0,1,0 };
 
-    std::cout << solution(arr, 2) << '\n';
+    std::cout << solution(arr, 4) << '\n';
 
 
     return 0;
