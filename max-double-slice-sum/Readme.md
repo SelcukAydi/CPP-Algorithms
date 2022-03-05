@@ -1,5 +1,6 @@
 # Problem Description
 **Link:**[https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
+
 A non-empty array A consisting of N integers is given.
 
 A triplet (X, Y, Z), such that 0 ≤ X < Y < Z < N, is called a double slice.
