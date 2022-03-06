@@ -161,6 +161,7 @@ double solution(const std::vector<int> &A, const std::vector<int> &B)
 
         // When the array A is shifted to one direction
         // array B is shifted to the opposite direction.
+        // Also the arrays must be partitionated in the same size.
         //
         int partitionB = realMid - mid;
 
