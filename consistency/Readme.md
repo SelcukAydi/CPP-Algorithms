@@ -1,5 +1,5 @@
 # Problem Description
-**Link : **https://www.facebook.com/codingcompetitions/hacker-cup/2021/qualification-round/problems/A1
+Link : https://www.facebook.com/codingcompetitions/hacker-cup/2021/qualification-round/problems/A1
 
 Connie received a string *S* for her birthday, consisting entirely of uppercase letters (each between "A" and "Z", inclusive).
 
