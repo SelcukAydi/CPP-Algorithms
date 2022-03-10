@@ -22,10 +22,10 @@ int solution(const std::vector<int>& A)
     // We may have maximum sqrt(n) number of flags.
     // This is because of the following:
     // Let's assume we have k flags at most.
-    // We have maximum k-1 distance between
+    // Then we have maximum k-1 distance between
     // the current flag and the next one.
     // As total we will have k.(k-1)+k number of items
-    // in the full array. This yields k^2.
+    // in the full array. This yields k^2 peaks needed.
     //
     for(int flags = (int)std::ceil(std::sqrt(n)); flags >= 1; --flags)
     {
